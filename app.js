@@ -5,7 +5,7 @@ const scissors = 'scissors';
 
 const tie = 0;
 const win = 1;
-const lose = 2;
+const lose = -1;
 
 const rockBtn = document.querySelector('#rock');
 const paperBtn = document.querySelector('#paper');
@@ -14,6 +14,9 @@ const titleResult = document.querySelector('#title-result');
 const userImg = document.querySelector('#user-img');
 const machineImg = document.querySelector('#machine-img');
 const msgPlayer = document.querySelector('#msgPlayer');
+const scorePlayer = document.querySelector('#scorePlayer');
+const scoreMachine = document.querySelector('#scoreMachine');
+
 
 window.addEventListener('load', () =>{
   // sessionStorage.removeItem('namePlayer');
@@ -73,16 +76,17 @@ function play(userOption){
     
     switch (result) {
       case win:
-        titleResult.innerHTML = 'Ganaste !'
-        // Swal.fire('Any fool can use a computer')
+        titleResult.innerHTML = 'Ganaste !';
         break;
       case lose:
-        titleResult.innerHTML = 'Perdiste !'
+        titleResult.innerHTML = 'Perdiste !';
         break;
       case tie:
-        titleResult.innerHTML = 'Empate !'
+        titleResult.innerHTML = 'Empate !';
         break;  
     }
+
+    score(result);
 
   }, 2000);
 
@@ -118,6 +122,32 @@ function calcResult(userOption, machineOption){
       return win;
     if(machineOption === rock) 
       return lose;
+  }
+}
+
+
+function score(result){
+  let pointsPlayer = 0;
+  let pointsMachine = 0;
+
+  
+  switch (result){
+    case 0:     
+      scoreMachine.innerHTML = `Score: ${pointsMachine}`
+      scorePlayer.innerHTML = `Score: ${pointsPlayer}`;
+      break;
+    case 1:
+      pointsPlayer++;
+      pointsMachine--;
+      scoreMachine.innerHTML = `Score: ${pointsMachine}`;
+      scorePlayer.innerHTML = `Score: ${pointsPlayer}`;
+      break;
+    case -1:
+      pointsPlayer--;
+      pointsMachine++;
+      scoreMachine.innerHTML = `Score: ${pointsMachine}`;
+      scorePlayer.innerHTML = `Score: ${pointsPlayer}`;
+      break;
   }
 }
 
