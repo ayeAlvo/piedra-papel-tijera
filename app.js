@@ -39,6 +39,7 @@ function play(userOption){
 
   setTimeout(() => {
     clearInterval(interval);
+    const machineOption = calcMachineOption();
     const result = calcResult(userOption, machineOption);
     // console.log(result);
   
@@ -47,6 +48,7 @@ function play(userOption){
     switch (result) {
       case win:
         titleResult.innerHTML = 'Ganaste !'
+        // Swal.fire('Any fool can use a computer')
         break;
       case lose:
         titleResult.innerHTML = 'Perdiste !'
@@ -60,6 +62,17 @@ function play(userOption){
 
 }
 
+function calcMachineOption(machineOption){
+  const number = Math.floor(Math.random() * 3);
+  switch (number){
+    case 0:
+      return rock;
+    case 1:
+      return paper;
+    case 2:
+      return scissors;
+  }
+}
 
 function calcResult(userOption, machineOption){
   if(userOption === machineOption){
@@ -82,15 +95,3 @@ function calcResult(userOption, machineOption){
   }
 }
 
-
-function calcMachineOption(machineOption){
-  const number = Math.floor(Math.random() * 3);
-  switch (number){
-    case 0:
-      return rock;
-    case 1:
-      return paper;
-    case 2:
-      return scissors;
-  }
-}
