@@ -17,6 +17,9 @@ const msgPlayer = document.querySelector('#msgPlayer');
 const scorePlayer = document.querySelector('#scorePlayer');
 const scoreMachine = document.querySelector('#scoreMachine');
 
+let pointsPlayer = 0;
+let pointsMachine = 0;
+
 
 window.addEventListener('load', () =>{
   // sessionStorage.removeItem('namePlayer');
@@ -35,7 +38,7 @@ window.addEventListener('load', () =>{
 
   console.log(sessionStorage.getItem('namePlayer'));
 
-  const namePlayer = sessionStorage.getItem('namePlayer')
+  const namePlayer = sessionStorage.getItem('namePlayer');
 
   if(namePlayer){
     msgPlayer.innerHTML = `Hola ${namePlayer} elige una opcion para empezar`
@@ -127,26 +130,19 @@ function calcResult(userOption, machineOption){
 
 
 function score(result){
-  let pointsPlayer = 0;
-  let pointsMachine = 0;
-
-  
+    
   switch (result){
     case 0:     
       scoreMachine.innerHTML = `Score: ${pointsMachine}`
       scorePlayer.innerHTML = `Score: ${pointsPlayer}`;
       break;
     case 1:
-      pointsPlayer++;
-      pointsMachine--;
-      scoreMachine.innerHTML = `Score: ${pointsMachine}`;
-      scorePlayer.innerHTML = `Score: ${pointsPlayer}`;
+      scoreMachine.innerHTML = `Score: ${--pointsMachine}`;
+      scorePlayer.innerHTML = `Score: ${++pointsPlayer}`;
       break;
     case -1:
-      pointsPlayer--;
-      pointsMachine++;
-      scoreMachine.innerHTML = `Score: ${pointsMachine}`;
-      scorePlayer.innerHTML = `Score: ${pointsPlayer}`;
+      scoreMachine.innerHTML = `Score: ${++pointsMachine}`;
+      scorePlayer.innerHTML = `Score: ${--pointsPlayer}`;
       break;
   }
 }
