@@ -1,3 +1,4 @@
+
 const rock = 'rock';
 const paper = 'paper';
 const scissors = 'scissors';
@@ -12,6 +13,31 @@ const scissorsBtn = document.querySelector('#scissors');
 const titleResult = document.querySelector('#title-result');
 const userImg = document.querySelector('#user-img');
 const machineImg = document.querySelector('#machine-img');
+const msgPlayer = document.querySelector('#msgPlayer');
+
+window.addEventListener('load', () =>{
+  // sessionStorage.removeItem('namePlayer');
+  // const namePlayer = prompt('Nombre');
+  Swal.fire({
+    title: 'Quieres elegir un nombre?',
+    input: 'text',
+    showCancelButton: true,
+  })
+  .then(nameResult => {
+    if(nameResult.value){
+      const player = nameResult.value
+      sessionStorage.setItem('namePlayer', player);
+    }
+  })
+
+  console.log(sessionStorage.getItem('namePlayer'));
+
+  const namePlayer = sessionStorage.getItem('namePlayer')
+
+  if(namePlayer){
+    msgPlayer.innerHTML = `Hola ${namePlayer} elige una opcion para empezar`
+  }
+})
 
 
 rockBtn.addEventListener('click', () => {
