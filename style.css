@@ -7,9 +7,8 @@
 
 .container{
   margin: 0 auto;
-  height: 100vh;
+  height: 740px;
   max-width: 420px;
-  max-height: 100vh;
   background-color: #C4C0EB;
   display: flex;
   flex-direction: column;
