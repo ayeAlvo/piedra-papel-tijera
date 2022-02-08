@@ -8,6 +8,7 @@ window.addEventListener('load', () =>{
   const msgPlayer = document.querySelector('#msgPlayer');
   const scorePlayer = document.querySelector('#scorePlayer');
   const scoreMachine = document.querySelector('#scoreMachine');
+  const resetBtn = document.querySelector('#reset');
   
   const rock = 'rock';
   const paper = 'paper';
@@ -57,6 +58,10 @@ window.addEventListener('load', () =>{
   scissorsBtn.addEventListener('click', () => {
     play(scissors);
   });
+
+  resetBtn.addEventListener('click', () => {
+    location.reload();
+  })
   
   
   function play(userOption){
@@ -130,18 +135,19 @@ window.addEventListener('load', () =>{
   
   
   function score(result){
+    const namePlayer = sessionStorage.getItem('namePlayer');
       
     switch (result){
       case 0:     
-        scoreMachine.innerHTML = `Score: ${pointsMachine}`
-        scorePlayer.innerHTML = `Score: ${pointsPlayer}`;
+        scoreMachine.innerHTML = `Machine Score: ${pointsMachine}`
+        scorePlayer.innerHTML = `${namePlayer ? namePlayer : 'Tu ' } Score: ${pointsPlayer}`;
         break;
       case 1:
-        scoreMachine.innerHTML = `Score: ${--pointsMachine}`;
+        scoreMachine.innerHTML = `Machine Score: ${--pointsMachine}`;
         scorePlayer.innerHTML = `Score: ${++pointsPlayer}`;
         break;
       case -1:
-        scoreMachine.innerHTML = `Score: ${++pointsMachine}`;
+        scoreMachine.innerHTML = `Machine Score: ${++pointsMachine}`;
         scorePlayer.innerHTML = `Score: ${--pointsPlayer}`;
         break;
     }

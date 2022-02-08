@@ -9,7 +9,7 @@
   margin: 0 auto;
   height: 100vh;
   max-width: 420px;
-  max-height: 745px;
+  max-height: 100vh;
   background-color: #C4C0EB;
   display: flex;
   flex-direction: column;
@@ -52,6 +52,20 @@
   border: 5px solid black;
   border-radius: 50px;
   margin: 5px;
+  
+}
+
+#scoreMachine{
+  margin-top: 15px;
+}
+
+#reset{
+  background-color: #b0eba9c4;
+  border: 3px solid black;
+  border-radius: 25px;
+  margin: 5px;
+  font-size: 20px;
+  padding: 10px;
 }
 
 footer{
