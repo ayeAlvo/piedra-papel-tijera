@@ -144,11 +144,11 @@ window.addEventListener('load', () =>{
         break;
       case 1:
         scoreMachine.innerHTML = `Machine Score: ${--pointsMachine}`;
-        scorePlayer.innerHTML = `Score: ${++pointsPlayer}`;
+        scorePlayer.innerHTML = `${namePlayer ? namePlayer : 'Tu ' } Score: ${pointsPlayer}`;
         break;
       case -1:
         scoreMachine.innerHTML = `Machine Score: ${++pointsMachine}`;
-        scorePlayer.innerHTML = `Score: ${--pointsPlayer}`;
+        scorePlayer.innerHTML = `${namePlayer ? namePlayer : 'Tu ' } Score: ${pointsPlayer}`;
         break;
     }
   } 
